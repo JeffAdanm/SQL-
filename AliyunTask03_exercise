@@ -39,7 +39,6 @@ SELECT product_name, purchase_price
   FROM product
  WHERE purchase_price NOT IN (500, 2800, 5000, NULL);
  
- 
 --执行结果为空
 
 --Task3 第二部分 练习题7
