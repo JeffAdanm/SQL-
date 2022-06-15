@@ -26,13 +26,15 @@ where regist_date>='2009-04-28';
 
 --Task2 第一部分 练习题2
 select * from product
-where purchase_price is NULL;
+where purchase_price = NULL;
 
 select * from product
-where purchase_price is not NULL;
+where purchase_price <> NULL;
 
 select * from `product` 
 WHERE `purchase_price` > NULL;
+
+--以上三句结果均为N/A
 
 --Task2 第一部分 练习题3
 select product_name,sale_price,purchase_price from `product`
