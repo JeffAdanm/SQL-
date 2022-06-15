@@ -1,8 +1,8 @@
-# SQL-
 本笔记为阿里云天池龙珠计划SQL训练营的学习内容，链接为：https://tianchi.aliyun.com/specials/promotion/aicampsql
 # Task02：SQL 基础查询与排序
 
 select语句基础
+
 1.从表中选取数据
 select column_name from table_name;
 
@@ -45,6 +45,7 @@ AND 相当于“并且”，类似数学中的取交集；
 OR 相当于“或者”，类似数学中的取并集。
 
 聚合查询
+
 1.聚合函数：SQL中用于汇总的函数，常用函数如下：
 count：记录行数
 sum：计算列中数值之和
@@ -68,6 +69,7 @@ MAX/MIN函数几乎适用于所有数据类型的列。SUM/AVG函数只适用于
 在聚合函数的参数中使用DISTINCT，可以删除重复数据。
 
 对表进行分组
+
 1.group by语句用法
 select column_name1,column_name2... from table_name
 group by column_name1,column_name2....;
@@ -86,10 +88,12 @@ select...from...where...group by...
 如果想指定条件，可以在SELECT，HAVING以及ORDER BY子句中使用聚合函数。
 
 为聚合结果指定条件
+
 1.用having得到特定分组
 WHERE子句只能指定记录（行）的条件，而不能用来指定组的条件，HAVING子句用于对分组进行过滤，可以使用数字、聚合函数和GROUP BY中指定的列名（聚合键）。
 
 对查询结果进行排序
+
 1.order by语句用法
 select column_name1,column_name2....from table_name
 order by <排序基列1>,<排序基列2>,.....;
@@ -106,11 +110,14 @@ FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY
 所以在ORDER BY中可以使用别名，但是在GROUP BY中不能使用别名。
 
 select语句的一般格式
+
 select [all/distinct] <目标列表达式1>[别名1],<目标列表达式2>[别名2]....
 from <table_name>,(select语句) [as] <别名>
 [where<条件表达式>]
 [group by <column_name> [having <条件表达式>]]
 [order by <column_name> [asc/desc]]
-1.目标列表达式的可选形式
+
+目标列表达式的可选形式
+
 *，<column_name>.*,count([all/distinct]*)
 [column_name.]<属性列名表达式>...
