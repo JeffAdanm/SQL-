@@ -1,0 +1,52 @@
+--Task3 第一部分 练习题1
+create view viewPractice5_1 as
+    select `product_name` , `sale_price` , `regist_date`  from `product` 
+    where `sale_price` >=1000 and `regist_date` ='2009-09-20' ;
+select * from viewPractice5_1;
+
+--Task3 第一部分 练习题2
+insert into viewPractice5_1 values(' 刀子 ', 300, '2009-11-02');
+--无法插入，因为不满足as后的子查询语句谓词条件
+
+--Task3 第一部分 练习题3
+select product_id,product_name,product_type,sale_price,
+	(select avg(sale_price)
+    	from product) as sale_price_all
+from product;
+
+--Task3 第一部分 练习题4
+create view AvgPriceByType as
+    select product_id,product_name,product_type,sale_price,
+    (select avg(sale_price)from product p2 
+     	where p1.product_type = p2.product_type
+        group by p1.product_type)
+    as avg_sale_price from product p1;
+
+--Task3 第二部分 练习题5
+正确，都会为空
+
+--Task3 第二部分 练习题6
+SELECT product_name, purchase_price
+  FROM product
+ WHERE purchase_price NOT IN (500, 2800, 5000);
+
+--执行结果为表格
+product_name purchase_price
+打孔器            320
+擦菜板            790
+
+SELECT product_name, purchase_price
+  FROM product
+ WHERE purchase_price NOT IN (500, 2800, 5000, NULL);
+ 
+ 
+--执行结果为空
+
+--Task3 第二部分 练习题7
+select sum(case when `sale_price` <=1000
+           then 1 else 0 end) as low_price,
+        sum(case when `sale_price` >=1001 and `sale_price` <=3000
+            then 1 else 0 end) as mid_price, 
+        sum(case when `sale_price` >=3001
+            then 1 else 0 end) as high_price
+from `product` ;
