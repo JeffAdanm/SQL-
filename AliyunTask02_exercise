@@ -48,3 +48,21 @@ select product_name,product_type ,`sale_price` *0.9 - `purchase_price`  as profi
 from `product` 
 where (`product_type` ="厨房用具" or `product_type` ="办公用品") 
 and `sale_price` *0.9 - `purchase_price` >=100;
+
+--Task2 第二部分 练习题5
+SELECT product_id, SUM（product_name）
+--本SELECT语句中存在错误。
+  FROM product 
+ GROUP BY product_type 
+ WHERE regist_date > '2009-09-01';
+ 
+ --答：group by子句后的列名和select子句中的列名不一致
+
+--Task2 第二部分 练习题6
+select product_type,sum(sale_price) sum,sum(purchase_price) sum from product
+group by product_type having(sum(sale_price)>sum(purchase_price)*1.5)
+order by product_type desc;
+
+--Task2 第二部分 练习题7
+select * from product
+order by IF(ISNULL(regist_date),0,1),regist_date desc;
