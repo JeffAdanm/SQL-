@@ -1,8 +1,8 @@
-# SQL-
 本笔记为阿里云天池龙珠计划SQL训练营的学习内容，链接为：https://tianchi.aliyun.com/specials/promotion/aicampsql
 # Task01：初识数据库与 SQL
 
 基本概念
+
 data：描述事物的符号记录
 database：数据库是长期存储在计算机内有组织、大量、共享的数据集合
 DB特征：用户共享，最小冗余度，较高数据独立性，可扩展性
@@ -15,6 +15,7 @@ SQL：structure query language（结构化查询语言），数据库查询和�
 RDBMS最常见结构：C/S结构（客户端/服务器结构）
 
 数据库的三级模式和两级映像
+
 三级模式：外模式，模式，内模式
 外模式（用户模式），是数据库用户能够看见和使用的局部数据的逻辑结构和特征的描述，是数据库用户的数据视图
 模式（逻辑模式），是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图
@@ -24,11 +25,13 @@ RDBMS最常见结构：C/S结构（客户端/服务器结构）
 模式/内模式映像：数据库只用一个模式和内模式，故该映像唯一，当内模式改变时，对映像做出改变后，模式保持不变，称为数据库的物理独立性
 
 数据库系统的组成
+
 硬件平台和数据库（内存，硬盘，通道等）
 软件平台DBMS
 各类人员（DBA,普通用户）
 
 初识关系数据库
+
 域：是一组具有相同数据类型的值的集合
 关系：是笛卡尔积在域上运算结果的子集，通俗理解：表格就是关系
 关系模式：是关系的一系列描述，通俗理解，表格第一行的表头就是关系模式
@@ -40,19 +43,22 @@ RDBMS最常见结构：C/S结构（客户端/服务器结构）
 用户定义的完整性：针对某一具体数据库的约束条件，即须符合实际
 
 关系代数
+
 传统集合运算：交，并，差，笛卡尔积
 关系运算：选择，投影，连接（自然连接，等值连接，外连接，左外右外连接）
 
 初识SQL
+
 SQL分类：DDL,DML,DCL
 DDL：数据定义语言,create（创建表结构）,drop（删除表结构）,alter（修改表结构）
 DML：数据操纵语言,select,insert,delete,update
 DCL：数据控制语言,commit（执行事务/确认数据库当前数据操作）,rollback（撤销事务/取消）,grant（授权用户）,revoke（收回权利）
 
-数据库创建
+数据库创建:
 create database db_name;
 
 表创建
+
 create table < 表名 >
 ( < 列名 1> < 数据类型 > < 该列所需约束 > ,
   < 列名 2> < 数据类型 > < 该列所需约束 > ,
@@ -66,19 +72,20 @@ create table < 表名 >
   数据类型：int/integer,char,varchar,date
   约束：not null,primary key
   
-  表删除
+  表删除:
   drop table table_name;
   
-  添加列
+  添加列:
   alter table table_name add column_name <该列数据类型>;
   
-  删除列
+  删除列:
   alter table table_name drop column_name;
   
-  清空表
+  清空表:
   truncate table table_name;
   
   数据更新
+  
   update table_name
   set column column_name=<表达式>/*要更新的内容*/
   where <条件>/*非必要*/
@@ -86,7 +93,7 @@ create table < 表名 >
   limit <子句>/*非必要*/
   多列更新只需在set子句里写多个列
   
-  向表中插入数据
+  向表中插入数据:
   insert into table_name(column_name1,column_name2...) values(值1，值2，值3...)
   对表所有列执行插入数据可省略列名
 
