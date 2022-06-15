@@ -1,0 +1,48 @@
+--Task2使用数据库shop中的product表进行，以下是前期准备
+create database shop;
+use shop;
+
+create table product(
+    product_id char(4) not null,
+    product_name varchar(100) not null,
+    product_type varchar(32) not null,
+    sale_price int default 0,
+    purchase_price int,
+    regist_date date,
+    primary key(product_id));
+    
+INSERT INTO product VALUES('0001', 'T恤衫', '衣服', 1000, 500, '2009-09-20');
+INSERT INTO product VALUES('0002', '打孔器', '办公用品', 500, 320, '2009-09-11');
+INSERT INTO product VALUES('0003', '运动T恤', '衣服', 4000, 2800, NULL);
+INSERT INTO product VALUES('0004', '菜刀', '厨房用具', 3000, 2800, '2009-09-20');
+INSERT INTO product VALUES('0005', '高压锅', '厨房用具', 6800, 5000, '2009-01-15');
+INSERT INTO product VALUES('0006', '叉子', '厨房用具', 500, NULL, '2009-09-20');
+INSERT INTO product VALUES('0007', '擦菜板', '厨房用具', 880, 790, '2008-04-28');
+INSERT INTO product VALUES('0008', '圆珠笔', '办公用品', 100, NULL, '2009-11-11');
+
+--Task2 第一部分 练习题1
+select product_name,regist_date from product
+where regist_date>='2009-04-28';
+
+--Task2 第一部分 练习题2
+select * from product
+where purchase_price is NULL;
+
+select * from product
+where purchase_price is not NULL;
+
+select * from `product` 
+WHERE `purchase_price` > NULL;
+
+--Task2 第一部分 练习题3
+select product_name,sale_price,purchase_price from `product`
+where `sale_price` - `purchase_price` >=500;
+
+select product_name,sale_price,purchase_price from `product` 
+WHERE  not `sale_price` - `purchase_price` <500;
+
+--Task2 第一部分 练习题4
+select product_name,product_type ,`sale_price` *0.9 - `purchase_price`  as profit
+from `product` 
+where (`product_type` ="厨房用具" or `product_type` ="办公用品") 
+and `sale_price` *0.9 - `purchase_price` >=100;
